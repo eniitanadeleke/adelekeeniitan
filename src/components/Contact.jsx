@@ -1,82 +1,93 @@
 import { useState } from 'react'
+import { profile } from '../data/content'
+import { GitHubIcon, LinkedInIcon, MailIcon } from './Icons'
 import './Contact.css'
 
 function Contact() {
-  const [status, setStatus] = useState('')
+  const [status, setStatus] = useState('idle')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const form = e.target
+    const form = e.currentTarget
+    setStatus('sending')
 
     try {
-      const response = await fetch('https://formspree.io/f/mwvjwnva', {
+      const response = await fetch(profile.formspree, {
         method: 'POST',
         body: new FormData(form),
-        headers: { Accept: 'application/json' }
+        headers: { Accept: 'application/json' },
       })
-
-      if (response.ok) {
-        setStatus('success')
-        form.reset()
-      } else {
-        setStatus('error')
-      }
+      if (!response.ok) throw new Error('Request failed')
+      setStatus('sent')
+      form.reset()
     } catch {
       setStatus('error')
     }
   }
 
   return (
-    <section className="contact" id="contact">
-      <div className="contact-container">
-        <h2 className="contact-heading">Get In Touch</h2>
-        <p className="contact-subtext">
-          I'm currently open to new opportunities. Whether you have a 
-          question, a project in mind, or just want to say hi — my 
-          inbox is always open!
-        </p>
+    <section className="section contact" id="contact">
+      <div className="wrap contact-grid">
+        <div className="contact-intro">
+          <h2 className="section-title">Let’s work together</h2>
+          <p>
+            I’m open to frontend roles, contract work and website projects. Tell me what you’re
+            building and I’ll get back to you by email.
+          </p>
+          <ul className="contact-direct">
+            <li>
+              <a href={`mailto:${profile.email}`}>
+                <MailIcon /> {profile.email}
+              </a>
+            </li>
+            <li>
+              <a href={profile.github} target="_blank" rel="noreferrer">
+                <GitHubIcon /> GitHub
+              </a>
+            </li>
+            <li>
+              <a href={profile.linkedin} target="_blank" rel="noreferrer">
+                <LinkedInIcon /> LinkedIn
+              </a>
+            </li>
+          </ul>
+        </div>
 
         <form className="contact-form" onSubmit={handleSubmit}>
-          <div className="form-row">
-            <div className="form-group">
-              <label>Name</label>
-              <input type="text" name="name" placeholder="Your name" required />
+          <div className="field-row">
+            <div className="field">
+              <label htmlFor="name">Name</label>
+              <input id="name" type="text" name="name" autoComplete="name" required />
             </div>
-            <div className="form-group">
-              <label>Email</label>
-              <input type="email" name="email" placeholder="your@email.com" required />
+            <div className="field">
+              <label htmlFor="email">Email</label>
+              <input id="email" type="email" name="email" autoComplete="email" required />
             </div>
           </div>
-          <div className="form-group">
-            <label>Subject</label>
-            <input type="text" name="subject" placeholder="What's this about?" required />
+          <div className="field">
+            <label htmlFor="subject">Subject</label>
+            <input id="subject" type="text" name="subject" required />
           </div>
-          <div className="form-group">
-            <label>Message</label>
-            <textarea rows="6" name="message" placeholder="Your message here..." required></textarea>
+          <div className="field">
+            <label htmlFor="message">Message</label>
+            <textarea id="message" rows="6" name="message" required />
           </div>
 
-          {status === 'success' && (
-            <p className="form-success">Message sent successfully! I'll get back to you soon 😊</p>
-          )}
-          {status === 'error' && (
-            <p className="form-error">Something went wrong. Please try again or email me directly.</p>
-          )}
-
-          <button type="submit" className="contact-btn">Send Message</button>
+          <div className="form-foot">
+            <button type="submit" className="btn btn-solid" disabled={status === 'sending'}>
+              {status === 'sending' ? 'Sending message…' : 'Send message'}
+            </button>
+            <p className={`form-status is-${status}`} role="status">
+              {status === 'sent' && 'Message sent. I’ll reply by email soon.'}
+              {status === 'error' && (
+                <>
+                  The message didn’t send. Check your connection and try again, or email{' '}
+                  <a href={`mailto:${profile.email}`}>{profile.email}</a>.
+                </>
+              )}
+            </p>
+          </div>
         </form>
-
-        <div className="contact-links">
-          <a href="mailto:eniitanadeleke@gmail.com" className="contact-link">
-            eniitanadeleke@gmail.com
-          </a>
-          <a href="https://github.com/eniitanadeleke" target="_blank" rel="noreferrer" className="contact-link">
-            GitHub
-          </a>
-          <a href="https://www.linkedin.com/in/adeleke-eniitan-12959b335/" target="_blank" rel="noreferrer" className="contact-link">
-            LinkedIn
-          </a>
-        </div>
       </div>
     </section>
   )

@@ -1,98 +1,136 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display:ital@1&display=swap');
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 48px;
+.nav {
   position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #0d0d0d;
-  z-index: 100;
-  border-bottom: 1px solid #1a1a1a;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  color: var(--white);
+  transition: background-color 0.25s, box-shadow 0.25s;
 }
 
-.navbar-logo {
-  font-family: 'DM Serif Display', serif;
-  font-style: italic;
-  font-size: 1.6rem;
-  color: #00e5a0;
-  letter-spacing: 0.02em;
+.nav.is-scrolled {
+  background: rgba(14, 20, 48, 0.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-.navbar-links {
+.nav-inner {
   display: flex;
-  list-style: none;
-  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
 }
 
-.navbar-links a {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
-  color: #aaaaaa;
-  letter-spacing: 0.05em;
+.nav-logo {
+  font-weight: 700;
+  font-variation-settings: 'opsz' 36, 'wdth' 85;
+  font-size: 1.15rem;
   text-decoration: none;
-  transition: color 0.3s ease;
+  letter-spacing: -0.01em;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-menu ul {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-menu ul a {
+  text-decoration: none;
+  font-size: 0.975rem;
+  color: rgba(255, 255, 255, 0.78);
+  padding-block: 6px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.nav-menu ul a:hover,
+.nav-menu ul a[aria-current] {
+  color: var(--white);
+  border-color: var(--kola);
+}
+
+.nav-cv {
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  transition: border-color 0.2s, background-color 0.2s;
+}
+.nav-cv:hover {
+  border-color: var(--kola);
+  background: rgba(227, 171, 62, 0.12);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
   position: relative;
 }
 
-.navbar-links a::after {
-  content: '';
+.nav-toggle-bar {
   position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: #00e5a0;
-  transition: width 0.3s ease;
+  left: 10px;
+  right: 10px;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.25s;
+}
+.nav-toggle-bar:nth-of-type(2) {
+  top: 17px;
+}
+.nav-toggle-bar:nth-of-type(3) {
+  top: 25px;
+}
+.nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-of-type(2) {
+  transform: translateY(4px) rotate(45deg);
+}
+.nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-of-type(3) {
+  transform: translateY(-4px) rotate(-45deg);
 }
 
-.navbar-links a:hover {
-  color: #00e5a0;
-}
-
-.navbar-links a:hover::after {
-  width: 100%;
-}
-
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 24px;
-  height: 1.5px;
-  background-color: #aaaaaa;
-  transition: all 0.3s ease;
-}
-
-@media (max-width: 768px) {
-  .navbar {
-    padding: 20px 24px;
+@media (max-width: 760px) {
+  .nav-toggle {
+    display: block;
   }
 
-  .navbar-links {
-    display: none;
+  .nav-menu {
+    position: fixed;
+    inset: 68px 0 auto 0;
     flex-direction: column;
-    position: absolute;
-    top: 65px;
-    left: 0;
-    width: 100%;
-    background-color: #0d0d0d;
-    padding: 24px;
+    align-items: flex-start;
     gap: 24px;
-    border-bottom: 1px solid #1a1a1a;
+    padding: 24px var(--gutter) 32px;
+    background: var(--indigo-950);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
   }
 
-  .navbar-links.open {
-    display: flex;
+  .nav-menu.is-open {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
   }
 
-  .hamburger {
-    display: flex;
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .nav-menu ul a {
+    font-size: 1.25rem;
   }
 }

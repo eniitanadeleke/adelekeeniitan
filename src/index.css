@@ -1,25 +1,163 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display:ital@1&display=swap');
+/* Palette drawn from adire, the indigo resist-dyed cloth of south-west Nigeria:
+   deep dye, mid dye, undyed cotton, and a kola-nut gold used sparingly. */
+:root {
+  --indigo-950: #0e1430;
+  --indigo-900: #121a3d;
+  --indigo-700: #26336f;
+  --indigo-500: #4558b0;
+  --indigo-200: #c4cbe8;
+  --cotton: #f1f2f6;
+  --cotton-deep: #e4e7f0;
+  --ink: #161a2c;
+  --muted: #565d78;
+  --line: #d3d7e4;
+  --kola: #e3ab3e;
+  --white: #ffffff;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  --font: 'Bricolage Grotesque', system-ui, sans-serif;
+  --step--1: 0.875rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.3125rem;
+  --step-2: 1.75rem;
+  --step-3: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+  --step-4: clamp(2.75rem, 1.6rem + 5.4vw, 5.75rem);
+
+  --wrap: 1180px;
+  --gutter: clamp(16px, 4vw, 40px);
 }
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background-color: #0d0d0d;
-  color: #ffffff;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  font-variation-settings: 'opsz' 14;
+  color: var(--ink);
+  background: var(--cotton);
+  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+}
+
 a {
-  text-decoration: none;
   color: inherit;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--kola);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: clamp(72px, 10vw, 128px);
+}
+
+.section-title {
+  font-size: var(--step-3);
+  font-weight: 700;
+  font-variation-settings: 'opsz' 72, 'wdth' 85;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.section-lede {
+  color: var(--muted);
+  max-width: 58ch;
+  margin-bottom: 48px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+
+.btn-solid {
+  background: var(--kola);
+  color: var(--indigo-950);
+}
+.btn-solid:hover {
+  background: #f0bf5e;
+}
+
+.btn-line {
+  border-color: currentColor;
+}
+.btn-line:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 100;
+  background: var(--kola);
+  color: var(--indigo-950);
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

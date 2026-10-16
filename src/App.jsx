@@ -1,25 +1,25 @@
-import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import Work from './components/Work'
 import About from './components/About'
-import Skills from './components/Skills'
-import Projects from './components/Projects'
 import Experience from './components/Experience'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 function App() {
   return (
-    <div>
+    <>
+      <a className="skip-link" href="#work">Skip to work</a>
       <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Contact />
+      <main>
+        <Hero />
+        <Work />
+        <About />
+        <Experience />
+        <Contact />
+      </main>
       <Footer />
-    </div>
+    </>
   )
 }
 

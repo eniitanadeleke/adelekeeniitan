@@ -1,0 +1,440 @@
+.work-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px 32px;
+  margin-bottom: 24px;
+}
+
+.work-head .section-lede {
+  margin-bottom: 24px;
+}
+
+.work-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.work-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: transparent;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.work-filter:hover {
+  border-color: var(--indigo-500);
+}
+
+.work-filter[aria-pressed='true'] {
+  background: var(--indigo-900);
+  border-color: var(--indigo-900);
+  color: var(--white);
+}
+
+.work-filter-count {
+  font-size: 0.8rem;
+  min-width: 22px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--cotton-deep);
+  color: var(--muted);
+  text-align: center;
+}
+.work-filter[aria-pressed='true'] .work-filter-count {
+  background: var(--kola);
+  color: var(--indigo-950);
+}
+
+.work-list {
+  display: grid;
+  gap: clamp(72px, 9vw, 120px);
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- one project ---------- */
+
+.project {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+}
+
+.project.is-flipped {
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+}
+
+.project.is-flipped .project-media {
+  order: 2;
+}
+
+.project-media {
+  position: sticky;
+  top: 96px;
+}
+
+.project-name {
+  font-size: var(--step-2);
+  font-weight: 700;
+  font-variation-settings: 'opsz' 48, 'wdth' 88;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.project-kind {
+  color: var(--indigo-500);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.project-summary {
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.project-subhead {
+  font-size: 1rem;
+  font-weight: 650;
+  margin-bottom: 10px;
+}
+
+.project-built {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.project-built li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.975rem;
+  line-height: 1.55;
+}
+
+.project-built li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border: 1.5px solid var(--indigo-500);
+  border-radius: 50%;
+}
+
+.project-stack {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+
+.project-stack li {
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--cotton-deep);
+  color: var(--indigo-700);
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1.5px solid var(--indigo-900);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.project-link:hover {
+  background: var(--cotton-deep);
+}
+
+.project-link.is-primary {
+  background: var(--indigo-900);
+  color: var(--white);
+}
+.project-link.is-primary:hover {
+  background: var(--indigo-700);
+}
+
+/* ---------- device previews ---------- */
+
+.preview {
+  position: relative;
+  padding-bottom: 28px;
+}
+
+.browser {
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 1px 0 var(--line), 0 24px 48px -24px rgba(18, 26, 61, 0.35);
+  text-decoration: none;
+}
+
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 38px;
+  padding: 0 14px;
+  background: var(--cotton-deep);
+  border-bottom: 1px solid var(--line);
+}
+
+.browser-dots {
+  display: flex;
+  gap: 6px;
+}
+.browser-dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c3c8d8;
+}
+
+.browser-url {
+  flex: 1;
+  max-width: 340px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  color: var(--muted);
+  background: var(--white);
+  border-radius: 6px;
+  padding: 3px 10px;
+}
+
+.browser-view {
+  display: block;
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--cotton);
+}
+
+.browser-view img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(0);
+  transition: top var(--scroll-time, 4s) ease-in-out, transform var(--scroll-time, 4s) ease-in-out;
+}
+
+/* Glide to the bottom of the page while hovered or focused, back up when released. */
+.browser:hover .browser-view img,
+.browser:focus-visible .browser-view img {
+  top: 100%;
+  transform: translateY(-100%);
+}
+
+.phone {
+  position: absolute;
+  right: -12px;
+  bottom: 0;
+  width: 22%;
+  min-width: 96px;
+  aspect-ratio: 390 / 844;
+  padding: 6px;
+  border-radius: 22px;
+  background: var(--indigo-950);
+  box-shadow: 0 20px 40px -18px rgba(14, 20, 48, 0.6);
+  pointer-events: none;
+}
+
+.phone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 16px;
+}
+
+.project.is-flipped .phone {
+  right: auto;
+  left: -12px;
+}
+
+.preview-hint {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 4px;
+  max-width: 70%;
+}
+
+.project.is-flipped .preview-hint {
+  margin-left: auto;
+  text-align: right;
+}
+
+.hint-touch {
+  display: none;
+}
+
+/* Touch screens have no hover, so let people scroll the screenshot directly. */
+@media (hover: none) {
+  .browser-view {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .browser-view img {
+    position: static;
+    transition: none;
+  }
+  .hint-hover {
+    display: none;
+  }
+  .hint-touch {
+    display: inline;
+  }
+}
+
+/* ---------- recommender sketch ---------- */
+
+.sketch-view {
+  aspect-ratio: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(16px, 4%, 32px);
+  background: var(--white);
+  font-size: clamp(0.7rem, 1.4vw, 0.95rem);
+}
+
+.sketch-title {
+  font-weight: 700;
+  font-size: 1.3em;
+}
+
+.sketch-fields {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.sketch-field {
+  display: grid;
+  gap: 4px;
+}
+
+.sketch-label {
+  color: var(--muted);
+  font-size: 0.85em;
+}
+
+.sketch-select {
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 10px;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sketch-button {
+  align-self: flex-start;
+  background: var(--indigo-900);
+  color: var(--white);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-weight: 600;
+}
+
+.sketch-results {
+  display: grid;
+  gap: 8px;
+}
+
+.sketch-result {
+  display: grid;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.sketch-result.is-open {
+  background: var(--cotton);
+}
+
+.sketch-lines {
+  display: grid;
+  gap: 6px;
+}
+.sketch-lines i {
+  display: block;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--indigo-200);
+}
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 900px) {
+  .project,
+  .project.is-flipped {
+    grid-template-columns: 1fr;
+  }
+  .project.is-flipped .project-media {
+    order: 0;
+  }
+  .project-media {
+    position: static;
+  }
+  .phone,
+  .project.is-flipped .phone {
+    right: 8px;
+    left: auto;
+    width: 24%;
+  }
+  .preview-hint,
+  .project.is-flipped .preview-hint {
+    margin-left: 0;
+    text-align: left;
+  }
+}
+
+@media (max-width: 520px) {
+  .phone {
+    display: none;
+  }
+  .preview {
+    padding-bottom: 0;
+  }
+  .preview-hint {
+    max-width: none;
+    margin-top: 10px;
+  }
+  .sketch-fields {
+    grid-template-columns: 1fr;
+  }
+}
