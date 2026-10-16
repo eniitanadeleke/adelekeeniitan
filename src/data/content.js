@@ -8,6 +8,11 @@ import eduDesktop from '../assets/work/eduspline-desktop.webp'
 import eduMobile from '../assets/work/eduspline-mobile.webp'
 import jobDesktop from '../assets/work/jobfilter-desktop.webp'
 import jobMobile from '../assets/work/jobfilter-mobile.webp'
+import sqWelcome from '../assets/work/sadaqua-welcome.webp'
+import sqHome from '../assets/work/sadaqua-home.webp'
+import sqCauses from '../assets/work/sadaqua-causes.webp'
+import opDesktop from '../assets/work/oneplace-desktop.webp'
+import opMobile from '../assets/work/oneplace-mobile.webp'
 
 // Everything personal lives here, so updating the site means editing one file.
 export const profile = {
@@ -24,11 +29,58 @@ export const profile = {
 
 export const filters = [
   { id: 'all', label: 'All work' },
-  { id: 'client', label: 'Client websites' },
+  { id: 'client', label: 'Client work' },
   { id: 'product', label: 'Products & builds' },
 ]
 
 export const projects = [
+  {
+    id: 'sadaqua',
+    group: 'client',
+    name: 'Sadaqua',
+    kind: 'Giving platform built in Next.js',
+    status: 'In progress',
+    summary:
+      'A mobile-first platform where people can give to verified causes, people in need can ask for help, and an admin team checks requests before they go live. I’m building the frontend from the team’s Figma design, starting with the giver side.',
+    built: [
+      'Next.js App Router with separate route groups for sign-in, givers, people requesting help and the admin team, so each role gets its own layout.',
+      'Sign up, log in and a full password reset flow, with field-level validation messages.',
+      'A giver home showing total given in naira, urgent needs, categories and featured causes, each with a funding progress bar.',
+      'Browse causes with search, category tabs, a filter sheet, sorting, and designed empty and error states.',
+      'A service layer that the screens call for all data. It returns sample data today, so connecting the real backend only changes those functions.',
+      'A reusable component kit (buttons, inputs, badges, progress bars, empty states) styled with CSS Modules.',
+    ],
+    stack: ['Next.js', 'React', 'App Router', 'CSS Modules', 'Mobile-first'],
+    links: [
+      { label: 'Visit site', href: 'https://sadaqua.vercel.app/' },
+      { label: 'Source code', href: 'https://github.com/eniitanadeleke/sadaqua' },
+    ],
+    phones: [
+      { src: sqWelcome, label: 'Welcome screen' },
+      { src: sqHome, label: 'Giver home' },
+      { src: sqCauses, label: 'Browse causes' },
+    ],
+  },
+  {
+    id: 'oneplace',
+    group: 'client',
+    name: 'One Place Properties',
+    kind: 'Commercial property website',
+    summary:
+      'One Place buys and develops commercial buildings in city centres: offices, shops, event halls and studios. I converted their static HTML site into a React app and redesigned it to work like a property platform, keeping all of their wording and brand colours.',
+    built: [
+      'A home-page search where choosing a city and space type opens the listings already filtered.',
+      'Filters stored in the URL (for example /spaces?city=lagos&type=office), so a filtered list can be shared as a link.',
+      'Saved listings with a heart button, remembered on the visitor’s device.',
+      'Studio and room cards that pre-select the right option on the booking form, with past dates blocked.',
+      'A full-screen menu and a sticky Enquire bar on phones, plus eight routed pages.',
+    ],
+    stack: ['React', 'Vite', 'React Router', 'CSS3', 'Mobile-first'],
+    links: [{ label: 'Source code', href: 'https://github.com/eniitanadeleke/oneplace' }],
+    url: 'Local build, not yet published',
+    desktop: opDesktop,
+    mobile: opMobile,
+  },
   {
     id: 'thf',
     group: 'client',

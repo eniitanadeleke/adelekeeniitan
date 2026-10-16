@@ -438,3 +438,103 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ---------- status and phone-row previews ---------- */
+
+.project-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+}
+
+.project-status {
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-variation-settings: 'opsz' 14, 'wdth' 100;
+  letter-spacing: 0;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #fbefd5;
+  color: #7a5310;
+}
+
+.browser:not(a):focus-visible {
+  outline-offset: 4px;
+}
+
+.phones-preview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 2vw, 20px);
+  padding-bottom: 0;
+}
+
+.phone-tile {
+  display: grid;
+  gap: 10px;
+}
+
+.phone-tile:nth-child(2) {
+  transform: translateY(-16px);
+}
+
+.phone-tile-frame {
+  display: block;
+  padding: 6px;
+  border-radius: 24px;
+  background: var(--indigo-950);
+  box-shadow: 0 20px 40px -20px rgba(14, 20, 48, 0.55);
+}
+
+.phone-tile-view {
+  display: block;
+  position: relative;
+  aspect-ratio: 390 / 844;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--white);
+}
+
+.phone-tile-view img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: top 4s ease-in-out, transform 4s ease-in-out;
+}
+
+.phone-tile-frame:hover img,
+.phone-tile-frame:focus-visible img {
+  top: 100%;
+  transform: translateY(-100%);
+}
+
+.phone-tile figcaption {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (hover: none) {
+  .phone-tile-view {
+    overflow-y: auto;
+  }
+  .phone-tile-view img {
+    position: static;
+    transition: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .phone-tile:nth-child(2) {
+    transform: none;
+  }
+  .phone-tile-frame {
+    padding: 4px;
+    border-radius: 16px;
+  }
+  .phone-tile-view {
+    border-radius: 12px;
+  }
+}

@@ -17,7 +17,7 @@ function BrowserPreview({ project }) {
   const Frame = live ? 'a' : 'div'
   const frameProps = live
     ? { href: live.href, target: '_blank', rel: 'noreferrer', 'aria-label': `Open the live ${project.name} site in a new tab` }
-    : {}
+    : { tabIndex: 0, role: 'img', 'aria-label': `Desktop screenshot of the ${project.name} website` }
 
   return (
     <div className="preview">
@@ -49,14 +49,44 @@ function BrowserPreview({ project }) {
   )
 }
 
+// Three phone screens side by side, for mobile-first products. Each one
+// scrolls through its own screen on hover or focus.
+function PhonesPreview({ project }) {
+  return (
+    <div className="preview phones-preview">
+      {project.phones.map((screen) => (
+        <figure className="phone-tile" key={screen.label}>
+          <span className="phone-tile-frame" tabIndex={0}>
+            <span className="phone-tile-view">
+              <img src={screen.src} alt={`${project.name}: ${screen.label}`} loading="lazy" />
+            </span>
+          </span>
+          <figcaption>{screen.label}</figcaption>
+        </figure>
+      ))}
+    </div>
+  )
+}
+
 function ProjectCard({ project, flip }) {
   return (
     <article className={`project ${flip ? 'is-flipped' : ''}`} aria-labelledby={`${project.id}-title`}>
       <div className="project-media">
-        {project.sketch ? <RecommenderSketch /> : <BrowserPreview project={project} />}
+        {project.sketch ? (
+          <RecommenderSketch />
+        ) : project.phones ? (
+          <PhonesPreview project={project} />
+        ) : (
+          <BrowserPreview project={project} />
+        )}
         <p className="preview-hint">
           {project.sketch ? (
             'Runs locally with its own API server, so this is a sketch of the interface.'
+          ) : project.phones ? (
+            <>
+              <span className="hint-hover">Hover or tab to a screen to scroll it.</span>
+              <span className="hint-touch">Scroll inside each screen to see all of it.</span>
+            </>
           ) : (
             <>
               <span className="hint-hover">Hover or tab to the preview to scroll the page.</span>
@@ -67,7 +97,10 @@ function ProjectCard({ project, flip }) {
       </div>
 
       <div className="project-body">
-        <h3 className="project-name" id={`${project.id}-title`}>{project.name}</h3>
+        <h3 className="project-name" id={`${project.id}-title`}>
+          {project.name}
+          {project.status && <span className="project-status">{project.status}</span>}
+        </h3>
         <p className="project-kind">{project.kind}</p>
         <p className="project-summary">{project.summary}</p>
 
