@@ -15,13 +15,13 @@ function About() {
           <p>
             Since 2021 I’ve built React interfaces for client projects, first at Lufemos Consults
             and now at Tiva Creative, where I build, refactor and QA client websites in React,
-            Next.js and Tailwind CSS. I write test cases, reproduce bugs and check fixes before
+            Next.js, TypeScript and Tailwind CSS. I write test cases, reproduce bugs and check fixes before
             anything ships, because a site that breaks on someone’s phone isn’t finished.
           </p>
           <p>
-            I use GitHub Copilot and Claude day to day for debugging and refactoring, and I check
-            what they produce against the brief. I’m also completing the Tech4Dev Women Techsters
-            software development fellowship.
+            I use GitHub Copilot and Claude day to day for debugging and refactoring, and I review
+            what they produce line by line against the brief before it ships. I completed the
+            Tech4Dev Women Techsters software development fellowship in 2025.
           </p>
         </div>
 

@@ -14,8 +14,8 @@ function Work() {
           <div>
             <h2 className="section-title">Selected work</h2>
             <p className="section-lede">
-              Live websites for real clients, plus the products and builds where I worked out how
-              to do things. Hover a preview to scroll through the whole page.
+              Live websites for real clients, plus products and builds. Each one says what I built
+              and links to the live site. Hover a preview to scroll through the whole page.
             </p>
           </div>
 

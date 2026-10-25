@@ -13,6 +13,11 @@ import sqHome from '../assets/work/sadaqua-home.webp'
 import sqCauses from '../assets/work/sadaqua-causes.webp'
 import opDesktop from '../assets/work/oneplace-desktop.webp'
 import opMobile from '../assets/work/oneplace-mobile.webp'
+import stDesktop from '../assets/work/staffora-desktop.webp'
+import stMobile from '../assets/work/staffora-mobile.webp'
+// To add your photo: save it as src/assets/photo/eniitan.jpg, then uncomment
+// the next line and the photo line in profile below.
+// import photo from '../assets/photo/eniitan.jpg'
 
 // Everything personal lives here, so updating the site means editing one file.
 export const profile = {
@@ -25,6 +30,7 @@ export const profile = {
   cv: `${import.meta.env.BASE_URL}Adeleke-Eniitan-CV.pdf`,
   formspree: 'https://formspree.io/f/mwvjwnva',
   now: 'Frontend Developer at Tiva Creative',
+  photo: null, // replace null with photo once it's imported above
 }
 
 export const filters = [
@@ -60,6 +66,26 @@ export const projects = [
       { src: sqHome, label: 'Giver home' },
       { src: sqCauses, label: 'Browse causes' },
     ],
+  },
+  {
+    id: 'staffora',
+    group: 'client',
+    name: 'Staffora Global',
+    kind: 'HR consulting website in Next.js and TypeScript',
+    summary:
+      'Staffora helps growing Nigerian businesses fix hiring, structure and staff retention. I built their new marketing website from the client’s content document and brand book, with search visibility treated as part of the build rather than an afterthought.',
+    built: [
+      'Six pages (home, services, about, case studies, masterclass, contact) in Next.js App Router with TypeScript, exported as a fast static site.',
+      'Technical SEO throughout: a unique title and description per page, canonical URLs, social share images, a generated sitemap and robots.txt.',
+      'Structured data so Google can read the organisation, each service, client reviews and the masterclass event.',
+      'Scroll reveals, counters and a testimonial slider built with Motion, all switched off for visitors who prefer reduced motion.',
+      'Lead forms that post to a form service, with an email fallback so no enquiry is lost if the service isn’t set up.',
+    ],
+    stack: ['Next.js', 'TypeScript', 'App Router', 'Motion', 'SEO'],
+    links: [{ label: 'Visit site', href: 'https://staffora-gilt.vercel.app/' }],
+    url: 'staffora-gilt.vercel.app',
+    desktop: stDesktop,
+    mobile: stMobile,
   },
   {
     id: 'oneplace',
@@ -203,13 +229,14 @@ export const projects = [
 ]
 
 export const skills = [
-  { group: 'Languages', items: ['JavaScript (ES6+)', 'HTML5', 'CSS3'] },
-  { group: 'Frameworks', items: ['React', 'Next.js', 'Tailwind CSS', 'React Router', 'Context API'] },
+  { group: 'Languages', items: ['JavaScript (ES6+)', 'TypeScript', 'HTML5', 'CSS3'] },
+  { group: 'Frameworks', items: ['React', 'Next.js (App Router)', 'Tailwind CSS', 'CSS Modules', 'React Router', 'Context API', 'Motion'] },
   {
     group: 'Engineering',
     items: ['Responsive layouts', 'Reusable components', 'REST API integration', 'Authentication & role-based routing', 'State management', 'Cross-browser testing'],
   },
-  { group: 'Quality', items: ['Manual & end-to-end QA', 'Test case writing', 'Bug reporting', 'Regression checks'] },
+  { group: 'Quality', items: ['Manual & end-to-end QA', 'Test case writing', 'Bug reporting', 'Regression checks', 'Reviewing AI-generated code'] },
+  { group: 'Web', items: ['Technical SEO', 'Structured data', 'Accessibility checks', 'Performance-minded builds'] },
   { group: 'Tools', items: ['Git & GitHub', 'Vercel', 'Vite', 'GitHub Copilot', 'Claude'] },
 ]
 
@@ -241,7 +268,7 @@ export const education = [
   {
     title: 'Certificate in Software Development (Frontend)',
     where: 'Tech4Dev, Women Techsters Fellowship',
-    when: 'In progress',
+    when: 'Sept 2024 – Sept 2025',
   },
   { title: 'B.Sc. Sociology', where: 'University of Ilorin', when: '2015 – 2019' },
 ]

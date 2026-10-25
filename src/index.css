@@ -1,17 +1,17 @@
-/* Palette drawn from adire, the indigo resist-dyed cloth of south-west Nigeria:
-   deep dye, mid dye, undyed cotton, and a kola-nut gold used sparingly. */
+/* Plain, mature palette: deep slate, cool off-white, steel blue for labels,
+   and one muted brass accent for primary actions. */
 :root {
-  --indigo-950: #0e1430;
-  --indigo-900: #121a3d;
-  --indigo-700: #26336f;
-  --indigo-500: #4558b0;
-  --indigo-200: #c4cbe8;
-  --cotton: #f1f2f6;
-  --cotton-deep: #e4e7f0;
-  --ink: #161a2c;
-  --muted: #565d78;
-  --line: #d3d7e4;
-  --kola: #e3ab3e;
+  --indigo-950: #141a24;
+  --indigo-900: #1b2330;
+  --indigo-700: #2f3b4d;
+  --indigo-500: #4a5d78;
+  --indigo-200: #c9d0db;
+  --cotton: #f4f5f7;
+  --cotton-deep: #e8eaee;
+  --ink: #171b22;
+  --muted: #5b6472;
+  --line: #d8dce3;
+  --kola: #c8a456;
   --white: #ffffff;
 
   --font: 'Bricolage Grotesque', system-ui, sans-serif;
@@ -116,7 +116,7 @@ textarea {
   color: var(--indigo-950);
 }
 .btn-solid:hover {
-  background: #f0bf5e;
+  background: #d6b56c;
 }
 
 .btn-line {

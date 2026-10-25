@@ -44,7 +44,7 @@ function Navbar() {
     <header className={`nav ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="wrap nav-inner">
         <a href="#top" className="nav-logo" onClick={() => setOpen(false)}>
-          Eniitan Adeleke
+          {profile.name}
         </a>
 
         <button
