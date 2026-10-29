@@ -15,9 +15,8 @@ import opDesktop from '../assets/work/oneplace-desktop.webp'
 import opMobile from '../assets/work/oneplace-mobile.webp'
 import stDesktop from '../assets/work/staffora-desktop.webp'
 import stMobile from '../assets/work/staffora-mobile.webp'
-// To add your photo: save it as src/assets/photo/eniitan.jpg, then uncomment
-// the next line and the photo line in profile below.
-// import photo from '../assets/photo/eniitan.jpg'
+// Portrait shown in the top section. To change it, replace this file (4:5 works best).
+import photo from '../assets/photo/eniitan.jpg'
 
 // Everything personal lives here, so updating the site means editing one file.
 export const profile = {
@@ -30,7 +29,7 @@ export const profile = {
   cv: `${import.meta.env.BASE_URL}Adeleke-Eniitan-CV.pdf`,
   formspree: 'https://formspree.io/f/mwvjwnva',
   now: 'Frontend Developer at Tiva Creative',
-  photo: null, // replace null with photo once it's imported above
+  photo,
 }
 
 export const filters = [
